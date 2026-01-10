@@ -2840,20 +2840,21 @@ function generateUploadPage(categoryOptions, storageType) {
       }
       .new-category button {
         padding: 0.8rem 1.2rem;
-        background: var(--success-color);
-        color: white;
-        border: none;
+        background: rgba(255,255,255,0.1);
+        color: var(--text-color);
+        border: 1px solid rgba(255,255,255,0.2);
         border-radius: 12px;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 500;
         white-space: nowrap;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(34, 197, 94, 0.2);
       }
       .new-category button:hover {
-        background: #16a34a;
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: white;
         transform: translateY(-1px);
-        box-shadow: 0 6px 12px rgba(34, 197, 94, 0.3);
+        box-shadow: 0 4px 12px rgba(129, 140, 248, 0.3);
       }
 
       .storage-toggle {
@@ -3798,36 +3799,36 @@ function generateAdminPage(fileCards, categoryOptions) {
         gap: 0.8rem;
         justify-content: center;
         margin-top: 1.5rem;
+        flex-wrap: wrap;
       }
-      .qr-copy, .qr-download, .qr-close {
-        padding: 0.6rem 1rem;
-        border: none;
+      .qr-action-btn {
+        padding: 0.6rem 1.2rem;
+        border: 1px solid rgba(255,255,255,0.2);
         border-radius: 8px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.2s;
         font-size: 0.9rem;
         font-weight: 500;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        background: rgba(255,255,255,0.05);
+        color: var(--text-color);
       }
-      .qr-copy {
+      .qr-action-btn.primary {
         background: var(--primary-color);
+        border-color: var(--primary-color);
         color: white;
       }
-      .qr-download {
-        background: #2ecc71; /* Green for download */
-        color: white;
+      .qr-action-btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255,255,255,0.15);
       }
-      .qr-close {
-        background: #95a5a6; /* Grey for close */
-        color: white;
+      .qr-action-btn.primary:hover {
+        background: #6366f1; /* Slightly darker indigo */
+        border-color: #6366f1;
       }
-      .qr-copy:hover { background: #4f46e5; }
-      .qr-download:hover { background: #27ae60; }
-      .qr-close:hover { background: #7f8c8d; }
 
 
       @media (max-width: 768px) {
@@ -4090,10 +4091,16 @@ function generateAdminPage(fileCards, categoryOptions) {
         if (qrDownloadBtn) {
             qrDownloadBtn.href = url;
             qrDownloadBtn.setAttribute('download', fileName || getFileName(url));
+            qrDownloadBtn.className = 'qr-action-btn'; // Reset class
         }
         
         if (qrCopyBtn) {
             qrCopyBtn.textContent = '复制链接';
+            qrCopyBtn.className = 'qr-action-btn primary';
+        }
+        
+        if (qrCloseBtn) {
+            qrCloseBtn.className = 'qr-action-btn';
         }
 
         if (qrModal) {
