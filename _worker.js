@@ -1686,7 +1686,18 @@ async function handleAuthRequest(request, config) {
 }
 async function handleLoginRequest(request, config) {
     if (request.method === 'POST') {
-        const { username, password } = await request.json();
+        let username, password;
+        const contentType = request.headers.get("content-type") || "";
+
+        if (contentType.includes("application/json")) {
+            const body = await request.json();
+            username = body.username;
+            password = body.password;
+        } else {
+            const formData = await request.formData();
+            username = formData.get("username");
+            password = formData.get("password");
+        }
         if (username === config.username && password === config.password) {
             const expirationDate = new Date();
             const cookieDays = config.cookie || 7;
