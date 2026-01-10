@@ -2514,23 +2514,24 @@ function generateLoginPage() {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
       :root {
-        --primary-color: #6366f1;
-        --secondary-color: #ec4899;
-        --text-color: #1e293b;
-        --text-secondary: #64748b;
-        --glass-bg: rgba(255, 255, 255, 0.85);
-        --glass-border: rgba(255, 255, 255, 0.5);
-        --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.15);
+        --primary-color: #818cf8;
+        --secondary-color: #f472b6;
+        --text-color: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --glass-bg: rgba(15, 23, 42, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.5);
       }
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #0f172a;
+        color: var(--text-color);
         overflow: hidden;
       }
       /* 这里的背景图会被JS动态替换 */
@@ -2668,77 +2669,53 @@ function generateLoginPage() {
       <div id="successMessage" class="message success-message"></div>
     </div>
     <script>
-      // 动态背景逻辑保留
-      async function setBingBackground() {
-        try {
-          const response = await fetch('/bing', { cache: 'no-store' });
-          const data = await response.json();
-          if (data.status && data.data && data.data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.data.length);
-            document.body.style.backgroundImage = \`url(\${data.data[randomIndex].url})\`;
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.backgroundPosition = 'center';
-          }
-        } catch (error) {
-          console.error('获取背景图失败:', error);
-        }
-      }
-      setBingBackground();
-
-      const urlParams = new URLSearchParams(window.location.search);
-      let redirectPath = urlParams.get('redirect') || '/upload';
-      if (!redirectPath.startsWith('/') || redirectPath.startsWith('//')) {
-          redirectPath = '/upload';
-      }
-      
+      const loginForm = document.getElementById('loginForm');
       const loginBtn = document.getElementById('loginBtn');
-      
-      document.getElementById('loginForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-        
+      const errorMessage = document.getElementById('errorMessage');
+      const successMessage = document.getElementById('successMessage');
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        // ... rest of login logic
+        loginBtn.disabled = true;
+        loginBtn.textContent = '登录中...';
         errorMessage.style.display = 'none';
         successMessage.style.display = 'none';
-        loginBtn.disabled = true;
-        loginBtn.textContent = '正在登录...';
         
-        if (!username || !password) {
-          errorMessage.textContent = '请输入用户名和密码';
-          errorMessage.style.display = 'block';
-          loginBtn.disabled = false;
-          loginBtn.textContent = '立即登录';
-          return;
+        const formData = new FormData(loginForm);
+        const params = new URLSearchParams();
+        for (const [key, value] of formData.entries()) {
+          params.append(key, value);
         }
+
         try {
           const response = await fetch('/login', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify({ username, password })
+            body: params
           });
-          if (response.ok) {
-            successMessage.textContent = '登录成功，正在跳转...';
-            successMessage.style.display = 'block';
-            setTimeout(() => {
-              window.location.href = redirectPath;
-            }, 800);
+          
+          if (response.redirected) {
+             successMessage.textContent = '登录成功，正在跳转...';
+             successMessage.style.display = 'block';
+             setTimeout(() => {
+                window.location.href = response.url;
+             }, 500);
           } else {
-            const data = await response.text();
-            errorMessage.textContent = data || '用户名或密码错误';
-            errorMessage.style.display = 'block';
-            loginBtn.disabled = false;
-            loginBtn.textContent = '立即登录';
+             const data = await response.text();
+             throw new Error('登录失败，请检查账号密码');
           }
         } catch (error) {
-          errorMessage.textContent = '登录请求失败，请稍后重试';
+          errorMessage.textContent = error.message;
           errorMessage.style.display = 'block';
-          console.error('登录错误:', error);
           loginBtn.disabled = false;
           loginBtn.textContent = '立即登录';
+          
+          // Shake animation
+          loginForm.classList.add('shake');
+          setTimeout(() => loginForm.classList.remove('shake'), 500);
         }
       });
     </script>
@@ -2759,13 +2736,13 @@ function generateUploadPage(categoryOptions, storageType) {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
       :root {
-        --primary-color: #6366f1;
-        --secondary-color: #ec4899;
-        --text-color: #1e293b;
-        --text-secondary: #64748b;
-        --glass-bg: rgba(255, 255, 255, 0.85);
-        --glass-border: rgba(255, 255, 255, 0.5);
-        --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.15);
+        --primary-color: #818cf8;
+        --secondary-color: #f472b6;
+        --text-color: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --glass-bg: rgba(15, 23, 42, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.5);
         --success-color: #22c55e;
         --error-color: #ef4444;
       }
@@ -2774,7 +2751,8 @@ function generateUploadPage(categoryOptions, storageType) {
         margin: 0;
         padding: 20px;
         min-height: 100vh;
-        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+        background-color: #0f172a;
+        color: var(--text-color);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -3043,11 +3021,82 @@ function generateUploadPage(categoryOptions, storageType) {
 
       /* Modal Enhancement */
       .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
         backdrop-filter: blur(4px);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .modal.show {
+        display: flex;
+        opacity: 1;
       }
       .modal-content {
+        background: var(--card-bg);
+        padding: 2rem;
         border-radius: 20px;
-        border: 1px solid rgba(255,255,255,0.8);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        border: 1px solid var(--glass-border);
+        max-width: 400px;
+        width: 90%;
+        transform: scale(0.95);
+        transition: transform 0.3s;
+        text-align: center;
+        color: var(--text-color);
+      }
+      .modal.show .modal-content {
+        transform: scale(1);
+      }
+      .modal-title {
+        margin: 0 0 1rem 0;
+        font-size: 1.4rem;
+        color: var(--text-color);
+        font-weight: 700;
+      }
+      .modal-message {
+        margin-bottom: 2rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-size: 1.05rem;
+      }
+      .modal-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+      .modal-button {
+        padding: 0.8rem 1.8rem;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        font-size: 1rem;
+      }
+      .modal-confirm {
+        background: var(--primary-color);
+        color: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      }
+      .modal-confirm:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+      }
+      .modal-cancel {
+        background: rgba(255,255,255,0.1);
+        color: var(--text-color);
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .modal-cancel:hover {
+        background: rgba(255,255,255,0.2);
       }
       
       @media (max-width: 768px) {
@@ -3137,20 +3186,7 @@ function generateUploadPage(categoryOptions, storageType) {
       </div>
     </div>
     <script>
-      async function setBingBackground() {
-        try {
-          const response = await fetch('/bing', { cache: 'no-store' });
-          const data = await response.json();
-          if (data.status && data.data && data.data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.data.length);
-            document.body.style.backgroundImage = \`url(\${data.data[randomIndex].url})\`;
-          }
-        } catch (error) {
-          console.error('获取背景图失败:', error);
-        }
-      }
-      setBingBackground();
-      setInterval(setBingBackground, 3600000);
+      // Dark Mode: Background image disabled
       const uploadArea = document.getElementById('uploadArea');
       const fileInput = document.getElementById('fileInput');
       const previewArea = document.getElementById('previewArea');
@@ -3392,15 +3428,15 @@ function generateAdminPage(fileCards, categoryOptions) {
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <style>
       :root {
-        --primary-color: #6366f1;
-        --secondary-color: #ec4899;
-        --text-color: #1e293b;
-        --text-secondary: #64748b;
-        --glass-bg: rgba(255, 255, 255, 0.85);
-        --glass-border: rgba(255, 255, 255, 0.5);
-        --card-bg: rgba(255, 255, 255, 0.9);
-        --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.15);
-        --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+        --primary-color: #818cf8;
+        --secondary-color: #f472b6;
+        --text-color: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --glass-bg: rgba(15, 23, 42, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --card-bg: rgba(30, 41, 59, 0.7);
+        --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.5);
+        --shadow-sm: 0 2px 5px rgba(0,0,0,0.2);
         --danger-color: #ef4444;
       }
       body {
@@ -3408,7 +3444,7 @@ function generateAdminPage(fileCards, categoryOptions) {
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+        background-color: #0f172a;
         color: var(--text-color);
       }
       /* 动态背景逻辑保留 */
@@ -3679,10 +3715,11 @@ function generateAdminPage(fileCards, categoryOptions) {
         opacity: 1;
       }
       .modal-content {
-        background: white;
+        background: var(--card-bg);
         padding: 2rem;
         border-radius: 20px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        border: 1px solid var(--glass-border);
         max-width: 400px;
         width: 90%;
         transform: scale(0.95);
@@ -3714,12 +3751,12 @@ function generateAdminPage(fileCards, categoryOptions) {
         background: var(--primary-color);
         color: white;
       }
-      .modal-confirm:hover { background: #4f46e5; }
+      .modal-confirm:hover { filter: brightness(1.1); }
       .modal-cancel {
-        background: #f1f5f9;
-        color: var(--text-secondary);
+        background: rgba(255,255,255,0.1);
+        color: var(--text-color);
       }
-      .modal-cancel:hover { background: #e2e8f0; }
+      .modal-cancel:hover { background: rgba(255,255,255,0.2); }
       
       #editSuffixInput {
           width: 100%;
@@ -3900,18 +3937,9 @@ function generateAdminPage(fileCards, categoryOptions) {
       let currentEditUrl = '';
       let confirmModal, confirmModalMessage, confirmModalConfirm, confirmModalCancel, editSuffixModal, qrModal, qrCopyBtn, qrDownloadBtn, qrCloseBtn, qrFileName, qrContainer;
       async function setBingBackground() {
-        try {
-          const response = await fetch('/bing', { cache: 'no-store' });
-          const data = await response.json();
-          if (data.status && data.data && data.data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.data.length);
-            document.body.style.backgroundImage = \`url(\${data.data[randomIndex].url})\`;
-          }
-        } catch (error) {
-          console.error('获取背景图失败:', error);
-        }
+          // Dark mode: Bing background disabled
       }
-      setTimeout(setBingBackground, 1000);
+      // setTimeout(setBingBackground, 1000);
       document.addEventListener('DOMContentLoaded', function() {
         console.log('DOM已加载，初始化页面...');
         confirmModal = document.getElementById('confirmModal');
