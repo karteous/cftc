@@ -2913,7 +2913,7 @@ function generateUploadPage(categoryOptions, storageType) {
       .storage-btn {
         padding: 0.6rem 1.2rem;
         border: none;
-        border-radius: 10px;
+        border-radius: 9999px;
         background: transparent;
         color: var(--text-secondary);
         font-weight: 600;
@@ -2921,12 +2921,13 @@ function generateUploadPage(categoryOptions, storageType) {
         transition: all 0.3s ease;
       }
       .storage-btn.active {
-        background: #fff;
-        color: var(--primary-color);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        background: #eff3f4;
+        color: #0f1419;
+        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
       }
       .storage-btn:hover:not(.active) {
-        color: var(--text-color);
+        color: #eff3f4;
+        background: rgba(255, 255, 255, 0.05);
       }
 
       .upload-area {
@@ -3623,18 +3624,20 @@ function generateAdminPage(fileCards, categoryOptions) {
         background: rgba(255,255,255,0.1);
       }
       .btn-danger {
-        background: rgba(239, 68, 68, 0.1);
-        color: var(--danger-color);
-        border: 1px solid transparent;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
+        background: transparent;
+        color: #fca5a5;
+        border: 1px solid rgba(239, 68, 68, 0.5);
+        padding: 0.6rem 1.2rem;
+        border-radius: 9999px;
         cursor: pointer;
         transition: all 0.2s;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        font-weight: 600;
       }
       .btn-danger:hover {
-        background: var(--danger-color);
-        color: white;
+        background: rgba(239, 68, 68, 0.1);
+        border-color: #ef4444;
+        color: #ef4444;
       }
 
       /* Grid */
@@ -3735,9 +3738,9 @@ function generateAdminPage(fileCards, categoryOptions) {
         background: rgba(0, 0, 0, 0.2);
       }
       .btn-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -3749,11 +3752,11 @@ function generateAdminPage(fileCards, categoryOptions) {
       }
       .btn-icon:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: var(--primary-color);
-        transform: scale(1.1);
+        color: #eff3f4;
+        transform: scale(1.05);
       }
       .btn-delete:hover {
-        color: var(--danger-color);
+        color: #ef4444;
         background: rgba(239, 68, 68, 0.1);
       }
 
