@@ -2630,22 +2630,23 @@ function generateLoginPage() {
       .btn-login {
         width: 100%;
         padding: 0.9rem;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: white;
+        background: #eff3f4;
+        color: #0f1419;
         border: none;
-        border-radius: 12px;
+        border-radius: 9999px;
         font-size: 1rem;
-        font-weight: 600;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
       }
       .btn-login:hover {
+        background: #d7dbdc;
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
       }
       .btn-login:active {
         transform: translateY(0);
+        background: #bfaaae;
       }
 
       .message {
@@ -2819,17 +2820,19 @@ function generateUploadPage(categoryOptions, storageType) {
         letter-spacing: -0.025em;
       }
       .admin-link {
-        color: var(--primary-color);
+        color: #eff3f4;
         text-decoration: none;
         font-size: 0.95rem;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        background: rgba(99, 102, 241, 0.1);
-        transition: all 0.3s ease;
+        font-weight: 600;
+        padding: 0.6rem 1.2rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: transparent;
+        transition: all 0.2s ease;
       }
       .admin-link:hover {
-        background: rgba(99, 102, 241, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #eff3f4;
         transform: translateY(-1px);
       }
 
@@ -2883,22 +2886,22 @@ function generateUploadPage(categoryOptions, storageType) {
         min-width: 300px;
       }
       .new-category button {
-        padding: 0.8rem 1.2rem;
-        background: rgba(255,255,255,0.1);
-        color: var(--text-color);
-        border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 12px;
+        padding: 0.8rem 1.5rem;
+        background: transparent;
+        color: #eff3f4;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 9999px;
         cursor: pointer;
-        font-weight: 500;
+        font-weight: 600;
         white-space: nowrap;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
       }
       .new-category button:hover {
-        background: var(--primary-color);
-        border-color: var(--primary-color);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #eff3f4;
         color: white;
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(129, 140, 248, 0.3);
+        box-shadow: none;
       }
 
       .storage-toggle {
@@ -3036,20 +3039,21 @@ function generateUploadPage(categoryOptions, storageType) {
         flex-wrap: wrap;
       }
       .button-container button {
-        padding: 0.7rem 1.2rem;
-        border: none;
-        border-radius: 10px;
-        background: var(--primary-color);
-        color: white;
+        padding: 0.7rem 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 9999px;
+        background: transparent;
+        color: #eff3f4;
         cursor: pointer;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+        font-weight: 600;
+        transition: all 0.2s ease;
+        box-shadow: none;
       }
       .button-container button:hover {
-        background: #4f46e5;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #eff3f4;
         transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
       }
 
       .copyright {
@@ -3118,30 +3122,31 @@ function generateUploadPage(categoryOptions, storageType) {
         justify-content: center;
       }
       .modal-button {
-        padding: 0.8rem 1.8rem;
-        border-radius: 12px;
+        padding: 0.8rem 2rem;
+        border-radius: 9999px;
         border: none;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 700;
         transition: all 0.2s;
         font-size: 1rem;
       }
       .modal-confirm {
-        background: var(--primary-color);
-        color: white;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        background: #eff3f4;
+        color: #0f1419;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
       }
       .modal-confirm:hover {
+        background: #d7dbdc;
         transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
       }
       .modal-cancel {
-        background: rgba(255,255,255,0.1);
-        color: var(--text-color);
-        border: 1px solid rgba(255,255,255,0.1);
+        background: transparent;
+        color: #eff3f4;
+        border: 1px solid rgba(255,255,255,0.3);
       }
       .modal-cancel:hover {
-        background: rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.1);
+        border-color: #eff3f4;
       }
       
       @media (max-width: 768px) {
@@ -3558,22 +3563,22 @@ function generateAdminPage(fileCards, categoryOptions) {
       ::selection { background: rgba(99, 102, 241, 0.3); color: white; }
       
       .btn-primary {
-        background: var(--primary-color);
-        color: white;
-        padding: 0.6rem 1.2rem;
-        border-radius: 10px;
+        background: #eff3f4;
+        color: #0f1419;
+        padding: 0.7rem 1.5rem;
+        border-radius: 9999px;
         text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+        font-size: 0.95rem;
+        font-weight: 700;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
         border: none;
         cursor: pointer;
       }
       .btn-primary:hover {
-        background: #4f46e5;
+        background: #d7dbdc;
         transform: translateY(-1px);
-        box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
       }
 
       /* Action Bar */
@@ -3602,18 +3607,19 @@ function generateAdminPage(fileCards, categoryOptions) {
       }
       
       .btn-secondary {
-        background: rgba(255,255,255,0.05);
-        color: var(--text-color);
-        border: 1px solid rgba(255,255,255,0.1);
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
+        background: transparent;
+        color: #eff3f4;
+        border: 1px solid rgba(255,255,255,0.3);
+        padding: 0.6rem 1.2rem;
+        border-radius: 9999px;
         cursor: pointer;
         transition: all 0.2s;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        font-weight: 600;
       }
       .btn-secondary:hover {
-        border-color: var(--primary-color);
-        color: var(--primary-color);
+        border-color: #eff3f4;
+        color: #fff;
         background: rgba(255,255,255,0.1);
       }
       .btn-danger {
@@ -3797,23 +3803,24 @@ function generateAdminPage(fileCards, categoryOptions) {
         margin-top: 1.5rem;
       }
       .modal-button {
-        padding: 0.6rem 1.2rem;
-        border-radius: 8px;
+        padding: 0.8rem 2rem;
+        border-radius: 9999px;
         border: none;
         cursor: pointer;
-        font-weight: 500;
+        font-weight: 700;
         transition: all 0.2s;
       }
       .modal-confirm {
-        background: var(--primary-color);
-        color: white;
+        background: #eff3f4;
+        color: #0f1419;
       }
-      .modal-confirm:hover { filter: brightness(1.1); }
+      .modal-confirm:hover { background: #d7dbdc; }
       .modal-cancel {
-        background: rgba(255,255,255,0.1);
-        color: var(--text-color);
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #eff3f4;
       }
-      .modal-cancel:hover { background: rgba(255,255,255,0.2); }
+      .modal-cancel:hover { background: rgba(255,255,255,0.1); border-color: #eff3f4; }
       
       #editSuffixInput {
           width: 100%;
@@ -3873,17 +3880,18 @@ function generateAdminPage(fileCards, categoryOptions) {
         color: var(--text-color);
       }
       .qr-action-btn.primary {
-        background: var(--primary-color);
-        border-color: var(--primary-color);
-        color: white;
+        background: #eff3f4;
+        border-color: #eff3f4;
+        color: #0f1419;
+        font-weight: 700;
       }
       .qr-action-btn:hover {
         transform: translateY(-1px);
         background: rgba(255,255,255,0.15);
       }
       .qr-action-btn.primary:hover {
-        background: #6366f1; /* Slightly darker indigo */
-        border-color: #6366f1;
+        background: #d7dbdc;
+        border-color: #d7dbdc;
       }
 
 
