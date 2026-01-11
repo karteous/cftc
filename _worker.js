@@ -2932,13 +2932,13 @@ function generateUploadPage(categoryOptions, storageType) {
         text-align: center;
         margin-bottom: 2rem;
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.02);
         transition: all 0.3s ease;
         cursor: pointer;
       }
       .upload-area:hover, .upload-area.dragover {
         border-color: var(--primary-color);
-        background: rgba(99, 102, 241, 0.05);
+        background: rgba(99, 102, 241, 0.1);
         transform: scale(1.005);
       }
       .upload-area p {
@@ -2955,11 +2955,11 @@ function generateUploadPage(categoryOptions, storageType) {
         display: flex;
         align-items: center;
         padding: 1rem;
-        background: #fff;
-        border: 1px solid rgba(0,0,0,0.05);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
         margin-bottom: 0.8rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         transition: transform 0.2s ease;
       }
       .preview-item img {
@@ -3007,9 +3007,9 @@ function generateUploadPage(categoryOptions, storageType) {
         width: 100%;
         min-height: 100px;
         padding: 1rem;
-        border: 1px solid rgba(0,0,0,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
-        background: #fff;
+        /* Background handled by shared rule */
         font-family: monospace;
         font-size: 0.9rem;
         resize: vertical;
@@ -3657,7 +3657,7 @@ function generateAdminPage(fileCards, categoryOptions) {
       }
       .file-card.selected {
         border: 2px solid var(--primary-color);
-        background: rgba(255,255,255,0.95);
+        background: rgba(30, 41, 59, 0.95);
       }
       
       .checkbox-wrapper {
@@ -3722,11 +3722,11 @@ function generateAdminPage(fileCards, categoryOptions) {
       
       .file-actions {
         padding: 0.8rem 1rem;
-        border-top: 1px solid rgba(0,0,0,0.05);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         display: flex;
         justify-content: space-around;
         gap: 0.5rem;
-        background: rgba(255,255,255,0.5);
+        background: rgba(0, 0, 0, 0.2);
       }
       .btn-icon {
         width: 32px;
@@ -3742,7 +3742,7 @@ function generateAdminPage(fileCards, categoryOptions) {
         transition: all 0.2s;
       }
       .btn-icon:hover {
-        background: rgba(0,0,0,0.05);
+        background: rgba(255, 255, 255, 0.1);
         color: var(--primary-color);
         transform: scale(1.1);
       }
