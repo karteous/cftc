@@ -2529,8 +2529,8 @@ function generateLoginPage() {
         --secondary-color: #f472b6;
         --text-color: #f1f5f9;
         --text-secondary: #94a3b8;
-        --glass-bg: rgba(15, 23, 42, 0.7);
-        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-bg: rgba(39, 39, 42, 0.9);
+        --glass-border: rgba(255, 255, 255, 0.08);
         --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.5);
       }
       body {
@@ -2541,7 +2541,7 @@ function generateLoginPage() {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #0f172a;
+        background-color: #18181b;
         color: var(--text-color);
         overflow: hidden;
       }
@@ -2765,8 +2765,8 @@ function generateUploadPage(categoryOptions, storageType) {
         --secondary-color: #f472b6;
         --text-color: #f1f5f9;
         --text-secondary: #94a3b8;
-        --glass-bg: rgba(15, 23, 42, 0.7);
-        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-bg: rgba(39, 39, 42, 0.9);
+        --glass-border: rgba(255, 255, 255, 0.08);
         --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.5);
         --success-color: #22c55e;
         --error-color: #ef4444;
@@ -2776,7 +2776,7 @@ function generateUploadPage(categoryOptions, storageType) {
         margin: 0;
         padding: 20px;
         min-height: 100vh;
-        background-color: #0f172a;
+        background-color: #18181b;
         color: var(--text-color);
         display: flex;
         justify-content: center;
@@ -3477,9 +3477,9 @@ function generateAdminPage(fileCards, categoryOptions) {
         --secondary-color: #f472b6;
         --text-color: #f1f5f9;
         --text-secondary: #94a3b8;
-        --glass-bg: rgba(15, 23, 42, 0.7);
-        --glass-border: rgba(255, 255, 255, 0.1);
-        --card-bg: rgba(30, 41, 59, 0.7);
+        --glass-bg: rgba(39, 39, 42, 0.9);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --card-bg: #27272a;
         --shadow-lg: 0 10px 40px -10px rgba(0,0,0,0.5);
         --shadow-sm: 0 2px 5px rgba(0,0,0,0.2);
         --danger-color: #ef4444;
@@ -3489,7 +3489,7 @@ function generateAdminPage(fileCards, categoryOptions) {
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        background-color: #0f172a;
+        background-color: #18181b;
         color: var(--text-color);
       }
       /* 动态背景逻辑保留 */
