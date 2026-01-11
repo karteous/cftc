@@ -2598,19 +2598,33 @@ function generateLoginPage() {
       .form-group input {
         width: 100%;
         padding: 0.8rem 1rem;
-        border: 2px solid transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
         font-size: 1rem;
-        background: rgba(255,255,255,0.8);
+        background: rgba(0, 0, 0, 0.2);
+        color: var(--text-color);
         transition: all 0.3s ease;
         box-sizing: border-box;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
       }
       .form-group input:focus {
         outline: none;
-        background: #fff;
+        background: rgba(0, 0, 0, 0.4);
         border-color: var(--primary-color);
         box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+      }
+      /* Dark Mode Overrides */
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+      ::selection { background: rgba(99, 102, 241, 0.3); color: white; }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover, 
+      input:-webkit-autofill:focus, 
+      input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+          -webkit-text-fill-color: white !important;
+          transition: background-color 5000s ease-in-out 0s;
       }
       
       .btn-login {
@@ -2827,20 +2841,39 @@ function generateUploadPage(categoryOptions, storageType) {
         align-items: stretch;
       }
       
-      .category-select, .new-category input {
+      .category-select, .new-category input, .url-area textarea {
         padding: 0.8rem 1rem;
-        border: 1px solid rgba(0,0,0,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
         font-size: 0.95rem;
-        background: rgba(255,255,255,0.8);
+        background: rgba(0, 0, 0, 0.2);
+        color: var(--text-color);
         transition: all 0.3s ease;
         flex-grow: 1;
       }
-      .category-select:focus, .new-category input:focus {
+      .category-select:focus, .new-category input:focus, .url-area textarea:focus {
         outline: none;
         border-color: var(--primary-color);
-        background: #fff;
+        background: rgba(0, 0, 0, 0.4);
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      }
+      .category-select option {
+        background: #1e293b;
+        color: var(--text-color);
+      }
+      /* Dark Mode Overrides */
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+      ::selection { background: rgba(99, 102, 241, 0.3); color: white; }
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover, 
+      input:-webkit-autofill:focus, 
+      input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+          -webkit-text-fill-color: white !important;
+          transition: background-color 5000s ease-in-out 0s;
       }
 
       .new-category {
@@ -3500,18 +3533,29 @@ function generateAdminPage(fileCards, categoryOptions) {
       
       .search-input, .filter-select {
         padding: 0.6rem 1rem;
-        border: 1px solid rgba(0,0,0,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         font-size: 0.9rem;
-        background: rgba(255,255,255,0.8);
+        background: rgba(0, 0, 0, 0.2);
+        color: var(--text-color);
         transition: all 0.3s ease;
       }
       .search-input:focus, .filter-select:focus {
         outline: none;
         border-color: var(--primary-color);
-        background: #fff;
+        background: rgba(0, 0, 0, 0.4);
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
       }
+      .filter-select option {
+        background: #1e293b;
+        color: var(--text-color);
+      }
+      /* Dark Mode Overrides */
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+      ::selection { background: rgba(99, 102, 241, 0.3); color: white; }
       
       .btn-primary {
         background: var(--primary-color);
@@ -3558,9 +3602,9 @@ function generateAdminPage(fileCards, categoryOptions) {
       }
       
       .btn-secondary {
-        background: white;
+        background: rgba(255,255,255,0.05);
         color: var(--text-color);
-        border: 1px solid rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.1);
         padding: 0.5rem 1rem;
         border-radius: 8px;
         cursor: pointer;
@@ -3570,6 +3614,7 @@ function generateAdminPage(fileCards, categoryOptions) {
       .btn-secondary:hover {
         border-color: var(--primary-color);
         color: var(--primary-color);
+        background: rgba(255,255,255,0.1);
       }
       .btn-danger {
         background: rgba(239, 68, 68, 0.1);
