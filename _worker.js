@@ -2635,7 +2635,7 @@ function generateLoginPage() {
         border: none;
         border-radius: 9999px;
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 500;
         cursor: pointer;
         transition: all 0.2s ease;
         box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
@@ -2823,7 +2823,7 @@ function generateUploadPage(categoryOptions, storageType) {
         color: #eff3f4;
         text-decoration: none;
         font-size: 0.95rem;
-        font-weight: 600;
+        font-weight: 500;
         padding: 0.6rem 1.2rem;
         border-radius: 9999px;
         border: 1px solid rgba(255, 255, 255, 0.3);
@@ -2892,7 +2892,7 @@ function generateUploadPage(categoryOptions, storageType) {
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 9999px;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 500;
         white-space: nowrap;
         transition: all 0.2s ease;
       }
@@ -2916,7 +2916,7 @@ function generateUploadPage(categoryOptions, storageType) {
         border-radius: 9999px;
         background: transparent;
         color: var(--text-secondary);
-        font-weight: 600;
+        font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
       }
@@ -3046,7 +3046,7 @@ function generateUploadPage(categoryOptions, storageType) {
         background: transparent;
         color: #eff3f4;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 500;
         transition: all 0.2s ease;
         box-shadow: none;
       }
@@ -3570,7 +3570,7 @@ function generateAdminPage(fileCards, categoryOptions) {
         border-radius: 9999px;
         text-decoration: none;
         font-size: 0.95rem;
-        font-weight: 700;
+        font-weight: 500;
         transition: all 0.2s ease;
         box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
         border: none;
@@ -3870,7 +3870,7 @@ function generateAdminPage(fileCards, categoryOptions) {
       .qr-action-btn {
         padding: 0.6rem 1.2rem;
         border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 8px;
+        border-radius: 9999px;
         cursor: pointer;
         transition: all 0.2s;
         font-size: 0.9rem;
@@ -3886,7 +3886,7 @@ function generateAdminPage(fileCards, categoryOptions) {
         background: #eff3f4;
         border-color: #eff3f4;
         color: #0f1419;
-        font-weight: 700;
+        font-weight: 500;
       }
       .qr-action-btn:hover {
         transform: translateY(-1px);
